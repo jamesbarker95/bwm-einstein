@@ -1,0 +1,41 @@
+Thank you for following along with our workshop! The recording can be found on invite.salesforce.com/buildwithme-einstein.  
+
+This file has the following key resources:
+  1. List of Assets For Each Relevant Account 
+  2. Prompt Template Content 
+  3. Template Triggered Flow Details 
+  4. Copilot Action Details 
+  5. Copilot Prompt
+
+--- 1. LIST OF ASSETS FOR EACH RELEVANT ACCOUNT --- 
+Burlington Textiles Corp of America
+  10kWh Battery
+Edge Communications
+  10kWh Battery
+  GenWatt Diesel 1000kW
+  Grid Disconnect Switch
+  Installation: Industrial - High
+  SLA: Gold
+
+--- 2. PROMPT TEMPLATE CONTENT --- 
+PROMPT Template Name: Identify Upsell Opportunities/Products
+PROMPT Template Description: Help the Seller identify upsell opportunities, or relevant whitespace, or relevant products to sell based on what similar accounts have. 
+
+Prompt Content: 
+  You are an Analyst helping the seller identify the top 3 products to sell to their customer:{!$Input:Account.Name}
+  
+  This is what the account currently has, only keep the asset name: {!$RelatedList:Account.Assets.Records}
+  
+  This is what other similar accounts have:
+  
+  Do not suggest it if the account already has it. List this in a top 3 list only. State that we are looking at similar accounts that match. {!$Input:Account.Type}
+
+--- 3. TEMPLATE TRIGGERED FLOW DETAILS ---
+FLow Name: Add Assets From Similar Accounts
+
+--- 4. COPILOT ACTION DETAILS --- 
+Input Details For Account: This is the account that the user is referring to.
+
+--- 5. COPILOT PROMPT ---
+In Copilot Builder: What are some upsell opportunities for Burlington Textiles Corp of America?
+While Looking At Burlington Textiles Corp of America Account Record: What are some upsells?
