@@ -1,0 +1,59 @@
+Thank you for following along with our workshop! The recording can be found on invite.salesforce.com/buildwithme-einstein.  
+
+This file has the following key resources:
+  1. List of Cases to create
+  2. Prompt Template 
+  3. Template Triggered Flow 
+  4. Screen Flow
+
+--- 1. LIST OF CASES TO CREATE ---
+
+Case 1:
+  Subject: Integration not working
+  Description: I keep trying to connect to system ABC and it doesn't stop loading. 
+  Case Origin: Email
+  Case Reason: Breakdown
+  Internal Comments:
+    1. Remove all connections to system ABC 
+    2. Clear your cache 
+    3. Authenticate through API v8
+    4. Get confirmation sync notification 
+
+Case 2: 
+  Subject: Lagging sync with integration
+  Description: The integration to system ABC was working recently then after a major update it stopped. 
+  Case Origin: Email
+  Case Reason: Breakdown
+  Internal Comments: Full refresh of the instance was required. 
+
+Case 3: 
+  Subject: Integration Problem
+  Descrption: Can't seem to integrate with system ABC
+  Case Origin: Email
+  Case Reason: Breakdown
+
+---- 2. PROMPT TEMPLATE --- 
+
+Type: Flex 
+Name: Resolutions From Similar Cases
+
+Template: 
+You are a service analyst looking at all of the cases that are closed to identify if there is a resolution that is applicable for this current case: {!$Input:Case.CaseNumber}
+Here is an overview of this case: {!$RecordSnapshot:Case.Snapshot}
+Here are the other cases for their overviews and resolutions. 
+Summarize this in one concise paragraph and state the relevant case numbers. 
+Give one summarized resolution set of steps to fix this and keep it under 300 characters. 
+
+--- 3. TEMPLATE TRIGGERED FLOW ---
+
+Flow Name: Get Similar Cases
+  Loop Name: For Each Case Found
+  Prompt Instructions: 
+    Number: {!For_Each_Case_Found.CaseNumber}
+    Subject: {!For_Each_Case_Found.Subject}
+    Description: {!For_Each_Case_Found.Description}
+    Resolution: {!For_Each_Case_Found.Comments}
+
+--- 4. SCREEN FLOW --- 
+
+Flow Name: Embedded Similar Case Resolutions
