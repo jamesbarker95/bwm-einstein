@@ -1,0 +1,76 @@
+Thank you for following along with our workshop! The recording can be found on invite.salesforce.com/buildwithme-einstein.  
+
+This file has the following key resources:
+  1. Update Burlington Textiles Corp of America
+  2. Retrieve Logged Calls With a Flow 
+  3. Prompt Template
+
+--- 1. UPDATE BURLINGTON TEXTILES COPR OF AMERICA ---
+  Log a call: Champion is unhappy with current implementation. Looking to push this project until their implementation issues are resolved.
+
+--- 2. RETRIEVE LOGGED CALLS WITH A FLOW ---
+  Flow Name: Related Account Activities
+
+  Loop Name: Activity Loop
+  Loop API Name: Acitivty_Loop 
+  Prompt Instructions: 
+    Subject: {!Activity_Loop.Subject}
+    Description: {!Activity_Loop.Description}
+
+--- 3. PROMPT TEMPLATE --- 
+
+  You are a account executive for {!$Input:Account.Name}. Provide a health score using the following rubric.
+
+  1. Opportunities
+    Review Opportunities here {!$RelatedList:Account.Opportunities.Records}
+    Number of Open Opportunities
+      0: 0 points
+      1-2: 4 points
+      3-5: 8 points
+      6+: 12 points
+    Value of Opportunities
+      Less than $10,000: 0 points
+      $10,000 - $50,000: 4 points
+      More than $50,000: 8 points
+    Total Points for Opportunities: 0-40
+  
+  2. Cases
+    Here is the case information you will need {!$RelatedList:Account.Cases.Records}Case Subject Complexity
+      Routine (e.g., password reset): 0 points
+      Moderate (e.g., product usage issue): 4 points
+      Complex (e.g., technical integration): 7 points
+      Critical (e.g., service outage): 10 points
+    Case Status
+      Open: 3 points
+      In Progress: 5 points
+      Resolved: 10 points
+      Escalated: Deduct 10 points
+      Total Points for Cases: 0-45
+  
+  3. Logged Calls
+  Review recent calls: {!$Flow:Related_Account_Activities.Prompt} and determine if the sentiment is positive or negative.
+    If it is positive: 10 points
+    If it is negative: Deduct 10 points
+ 
+  Letter Grade Scale
+    A (Excellent): 90-100 pointsThe account is in outstanding health with a high number of open opportunities, quick case resolution, and frequent, meaningful communication.
+    B (Good): 80-89 pointsThe account is in good health but could improve in one or two areas such as case complexity or opportunity progression.
+    C (Fair): 70-79 pointsThe account is in fair health, with notable room for improvement in areas like logged calls or the number of open opportunities.
+    D (Poor): 60-69 pointsThe account is in poor health, with multiple areas needing attention, particularly in case handling and communication frequency.
+    F (Failing): Below 60 pointsThe account is in critical condition, requiring immediate intervention to address major deficiencies in all areas.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
