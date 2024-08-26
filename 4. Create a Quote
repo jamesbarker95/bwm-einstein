@@ -1,0 +1,31 @@
+Thank you for following along with our workshop! The recording can be found on invite.salesforce.com/buildwithme-einstein.  
+
+This file has the following key resources:
+  1. Base Setup
+  2. Flow Details 
+  3. Copilot Action Details
+  
+--- 1. BASE SETUP --- 
+
+Price Book Name: BWM Price Book
+  Add Products: 
+    10kWh Battery
+    Microinverter
+
+
+--- 2. FLOW DETAILS ---
+
+Flow Name: Create Opportunity & Quote With Related Products Mentioned
+Description: Help the user create the opportunity and quote. Make sure to add the related products that the user mentioned.
+
+Variable: Account
+  Description: This is the account that the user is referring to.
+  Type: Text
+  Available For Input: TRUE
+
+Variable: ProductsAndQuantitiesMentioned
+  Description: This is the name of the products and their associated quantities that were mentioned. Regardless of how the user presents the information, store this in the format of Product Name===Quantity like: Battery, High Capacity===10.
+  Type: Text
+  Available For Input: TRUE
+  Allow Multiple Values: TRUE
+  
