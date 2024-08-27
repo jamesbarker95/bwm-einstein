@@ -28,4 +28,31 @@ Variable: ProductsAndQuantitiesMentioned
   Type: Text
   Available For Input: TRUE
   Allow Multiple Values: TRUE
+
+Variable: CreatedQuote
+  Description: This is the quote and opportunity created for the user.
+  Type: Record
+  Object: Quote
+  Available For Output: TRUE
   
+Loop Name: Get Each Product
+
+Formula: 
+  Name: IsolateProduct
+  Formula: LEFT({!Get_Each_Product} , FIND("===", {!Get_Each_Product})-1)
+
+  Name: IsolateQuantity
+  Formula: VALUE(MID({!Get_Each_Product}, FIND("===", {!Get_Each_Product}) + 3, LEN({!Get_Each_Product}) - FIND("===", {!Get_Each_Product}) - 2))
+
+--- 3. COPILOT ACTION DETAILS ---
+
+Action Name: Create Opportunity & Quote With Related Products Mentioned
+
+Because we added the descriptions to the variables in the flow, we should not need to do them here, but just in case: 
+
+  Inputs: 
+    Account: This is the account that the user is referring to.
+    ProductsAndQuantitiesMentioned: This is the name of the products and their associated quantities that were mentioned. Regardless of how the user presents the information, store this in the format of Product Name===Quantity like: Battery, High Capacity===10.
+
+  Outputs: 
+    CreatedQuote: This is the quote and opportunity created for the user.
