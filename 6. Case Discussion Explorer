@@ -1,0 +1,26 @@
+Thank you for following along with our workshop! The recording can be found on invite.salesforce.com/buildwithme-einstein.  
+
+This file has the following key resources:
+  1. Case Chatter Posts
+  2. Prompt Template 
+
+--- 1. CASE CHATTER POSTS ---
+  Find Case Number: 00001000
+    Subject: Starting generator after electrical failure
+
+  Add the following as separate chatter posts: 
+    Case logged by the customer reporting an issue with starting their generator after an electrical failure.
+    Customer mentioned that there was a power outage last night, and the generator did not start automatically. They attempted to start it manually, but no response from the generator.
+    Error code "E05" was reported on the control panel. Informed the customer that this code typically indicates a fuel issue or a battery failure, but further investigation is needed.
+    Asked the customer to check fuel levels and inspect the battery. The last maintenance check-up was done approximately six months ago, and there were no issues reported until now.
+    Noted in the case that if the fuel level is sufficient and the battery still appears to be the problem, we will need to escalate and dispatch a field service technician to address the battery issue.
+    Awaiting customer’s confirmation on fuel status before proceeding with next steps. Follow-up required once the customer provides additional information. Technician dispatch may be necessary based on customer response.
+
+--- 2. PROMPT TEMPLATE ---
+  You are a service agent looking to see if a question was discussed in the case discussion. 
+
+  Question: {!$Input:Question}
+
+  Case Discussion: {!$Flow:Retrieve_Case_Discussion.Prompt}
+
+  Keep the answer concise. 
